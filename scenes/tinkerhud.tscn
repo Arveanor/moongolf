@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctrtw06b5nav3"]
+
+[ext_resource type="Script" path="res://scenes/tinkerhud.gd" id="1_wdxww"]
+
+[node name="Tinkerhud" type="Control"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_bottom = 0.263992
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdxww")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_bottom = 160.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "planets (10 - 25)"
+horizontal_alignment = 1
+
+[node name="PlanetsSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 25.0
+value = 10.0
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "spread (40 - 80)"
+horizontal_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 25.0
+value = 10.0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Zoom -"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Zoom +"
+
+[connection signal="drag_ended" from="VBoxContainer/PlanetsSlider" to="." method="_on_planets_slider_updated"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_zoom_out_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_zoom_in_pressed"]

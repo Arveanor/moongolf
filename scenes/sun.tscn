@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://lhidld3fuxy8"]
+
+[ext_resource type="Script" path="res://scripts/controlled_body.gd" id="1_l514p"]
+[ext_resource type="Texture2D" uid="uid://c5sh4w4kqu2xn" path="res://sunstar.png" id="2_w3pmx"]
+
+[node name="Node2D" type="RigidBody2D"]
+script = ExtResource("1_l514p")
+
+[node name="Sunstar" type="Sprite2D" parent="."]
+texture = ExtResource("2_w3pmx")

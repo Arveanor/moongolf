@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://hrpu62tqi0uq"]
+
+[ext_resource type="Script" path="res://scripts/ui_test.gd" id="1_6xv06"]
+[ext_resource type="Texture2D" uid="uid://b5jmcpj4fskc5" path="res://bluegray_mat.png" id="2_ujqux"]
+
+[node name="SystemBuilder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+script = ExtResource("1_6xv06")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+texture = ExtResource("2_ujqux")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 7.0
+offset_right = 162.0
+offset_bottom = 557.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "System Builder
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Number of Planets
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 5.0
+scrollable = false
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "configure planets"
+
+[node name="PlanetDetail" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BuildButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Build System"
+
+[connection signal="drag_ended" from="VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="pressed" from="VBoxContainer/BuildButton" to="." method="_generate_system"]

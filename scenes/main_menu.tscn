@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmeuyr0rmxs74"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_dspp0"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dspp0")
+
+[node name="RootMenu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.401
+anchor_right = 0.714
+anchor_bottom = 0.99
+offset_left = -0.208008
+offset_top = 4.0
+offset_right = 0.287964
+offset_bottom = -0.280029
+alignment = 1
+
+[node name="QuickPlay" type="Button" parent="RootMenu"]
+layout_mode = 2
+text = "Quick Launch"
+
+[node name="QuickPlayHBox" type="HBoxContainer" parent="RootMenu"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="RootMenu/QuickPlayHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "QL 01"
+
+[node name="Button2" type="Button" parent="RootMenu/QuickPlayHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "QL 02"
+
+[node name="Button3" type="Button" parent="RootMenu/QuickPlayHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "QL 03"
+
+[node name="SystemBuilder" type="Button" parent="RootMenu"]
+layout_mode = 2
+text = "System Builder"
+
+[node name="QuitGame" type="Button" parent="RootMenu"]
+layout_mode = 2
+text = "Quit Game
+"
+
+[connection signal="pressed" from="RootMenu/QuickPlay" to="." method="_on_quick_play_pressed"]
+[connection signal="pressed" from="RootMenu/QuickPlayHBox/Button" to="." method="_on_quick_play1_pressed"]
+[connection signal="pressed" from="RootMenu/QuickPlayHBox/Button2" to="." method="_on_quick_play2_pressed"]
+[connection signal="pressed" from="RootMenu/QuickPlayHBox/Button3" to="." method="_on_quick_play3_pressed"]
+[connection signal="pressed" from="RootMenu/SystemBuilder" to="." method="_on_system_builder_pressed"]
+[connection signal="pressed" from="RootMenu/QuitGame" to="." method="_on_quit_game_pressed"]

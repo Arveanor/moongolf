@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://nmjnyfp7dbio"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_w8hro"]
+[ext_resource type="PackedScene" uid="uid://lhidld3fuxy8" path="res://scenes/sun.tscn" id="2_y2bre"]
+[ext_resource type="Texture2D" uid="uid://bg4lpyj7s7a6s" path="res://star_bg.png" id="3_77ho2"]
+[ext_resource type="Texture2D" uid="uid://bdsd4mv6cihf4" path="res://cursor.png" id="5_7qrfj"]
+[ext_resource type="PackedScene" uid="uid://ctrtw06b5nav3" path="res://scenes/tinkerhud.tscn" id="6_8gf82"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_w8hro")
+gamemode = "debug_parallels"
+
+[node name="star" parent="." instance=ExtResource("2_y2bre")]
+top_level = true
+z_index = 5
+position = Vector2(1204, 336)
+mass = 8000.0
+input_scalar = 8000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_77ho2")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.55, 0.55)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 101.0
+offset_bottom = 23.0
+text = "dev made a woopsy"
+
+[node name="Tinkerhud" parent="CanvasLayer" instance=ExtResource("6_8gf82")]
+anchors_preset = 1
+offset_left = -380.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="cogcursor" type="Sprite2D" parent="."]
+texture = ExtResource("5_7qrfj")
