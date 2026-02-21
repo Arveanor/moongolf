@@ -95,7 +95,8 @@ func apprehend_moon():
 	
 
 func _on_body_entered_trap(_body):
-	trapped_bodies.append(_body)
+	if(_body.is_moon):
+		trapped_bodies.append(_body)
 
 func _on_body_exited_trap(_body):
 	var i = trapped_bodies.find(_body)

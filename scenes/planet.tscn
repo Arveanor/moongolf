@@ -7,6 +7,7 @@
 font_size = 36
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ggem"]
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rych"]
 
@@ -26,12 +27,10 @@ label_settings = SubResource("LabelSettings_bwylg")
 [node name="MoonTrap" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoonTrap"]
-scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_4ggem")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_6rych")
 
 [connection signal="body_entered" from="MoonTrap" to="." method="_on_body_entered_trap"]
