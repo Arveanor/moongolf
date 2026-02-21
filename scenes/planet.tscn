@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpgqjol8ccqre"]
+[gd_scene load_steps=6 format=3 uid="uid://cpgqjol8ccqre"]
 
 [ext_resource type="Script" path="res://scripts/body.gd" id="1_8k12b"]
 [ext_resource type="Texture2D" uid="uid://dppmi46k57rpg" path="res://planet01.png" id="2_ur8og"]
@@ -7,6 +7,8 @@
 font_size = 36
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ggem"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rych"]
 
 [node name="Node2D" type="RigidBody2D"]
 script = ExtResource("1_8k12b")
@@ -21,10 +23,16 @@ offset_right = 40.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_bwylg")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="MoonTrap" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoonTrap"]
+scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_4ggem")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered_trap"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited_trap"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_6rych")
+
+[connection signal="body_entered" from="MoonTrap" to="." method="_on_body_entered_trap"]
+[connection signal="body_exited" from="MoonTrap" to="." method="_on_body_exited_trap"]

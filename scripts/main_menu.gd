@@ -39,3 +39,4 @@ func _on_quick_play2_pressed():
 
 func _on_quick_play1_pressed():
 	get_tree().change_scene_to_packed(qp_scenes[1])
+

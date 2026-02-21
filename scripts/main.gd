@@ -111,3 +111,7 @@ func _camera_zoom_step(step = 0.1):
 	camera.zoom.x += step
 	camera.zoom.y += step
 	Constants.camera_zoom = camera.zoom
+	
+func _slow_lerp_func_thing(b1, b2):
+	var tval = 0.1
+	b1.velocity = b1.velocity.lerp(b2.velocity, tval)

@@ -15,7 +15,7 @@ var timer = Timer.new()
 @export var DEBUG_ELIPTICALITY = 1.0
 @export var initial_velocity = Vector2(0.0, 0.0)
 @export var DEBUG_LABEL_DISPLAY_MODE = "unimplemented"
-
+@export var is_moon = false
 
 
 var trapped_bodies = []
@@ -38,6 +38,7 @@ func _physics_process(_delta):
 	var combined_gforce = calc_total_force()
 	#print(combined_gforce)
 	self.apply_central_force(combined_gforce)
+	apprehend_moon()
 	draw_tail()
 
 func display_info():
@@ -88,9 +89,9 @@ func apprehend_moon():
 	var relative_sov
 	var relative_v
 	for body in trapped_bodies:
-		relative_sov = root.calculate_sov(body, self)
+		relative_sov = root.calculate_sov(body, self) + self.linear_velocity
+		body.linear_velocity = body.linear_velocity.lerp(relative_sov, 0.1)
 		relative_v = body.linear_velocity - self.linear_velocity # should give us body's v relative to self
-		body.apply_central_force(Vector2(0, 0))
 	
 
 func _on_body_entered_trap(_body):
